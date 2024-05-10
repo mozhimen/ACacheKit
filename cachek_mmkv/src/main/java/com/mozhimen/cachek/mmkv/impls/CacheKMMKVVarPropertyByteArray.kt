@@ -1,4 +1,4 @@
-package com.mozhimen.cachek.mmkv.temps
+package com.mozhimen.cachek.mmkv.impls
 
 import com.mozhimen.basick.cachek.bases.BaseCacheKVarPropertyString
 import com.mozhimen.cachek.mmkv.helpers.CacheKMMKVProvider
@@ -11,6 +11,6 @@ import com.mozhimen.cachek.mmkv.helpers.CacheKMMKVProvider
  * @Date 2023/3/13 15:17
  * @Version 1.0
  */
-class CacheKMMKVVarPropertyString(
+class CacheKMMKVVarPropertyByteArray(
     cacheKMMKVProvider: CacheKMMKVProvider, key: String, default: String = ""
 ) : BaseCacheKVarPropertyString<CacheKMMKVProvider>(cacheKMMKVProvider,key,default)
