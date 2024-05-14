@@ -22,10 +22,12 @@ dependencyResolutionManagement {
 rootProject.name = "ACacheKit"
 include ':app'
 include ':cachek_mmkv'
-//SwiftKit
-include ':SwiftKit'
-project(':SwiftKit').projectDir = new File("C:\\Users\\${System.getenv().get("USERNAME")}\\Documents\\GitHub\\SwiftKit")
-include ':SwiftKit:basick'
 include ':cachek_rx_preferences2'
 include ':cachek_flow_preferences'
 include ':cachek_harmony'
+include ':cachek_room_paging'
+//SwiftKit
+include ':SwiftKit'
+project(':SwiftKit').projectDir = new File("D:\\WorkSpace\\GitHub\\SwiftKit")
+include ':SwiftKit:basick'
+
