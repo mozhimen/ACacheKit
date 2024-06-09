@@ -1,33 +1,38 @@
-package com.mozhimen.cachek.mmkv.helpers
+package com.mozhimen.cachek.sharedpreferences.helpers
 
+import android.content.Context
 import android.content.SharedPreferences
-import android.os.Parcelable
+import android.content.SharedPreferences.Editor
 import com.mozhimen.cachek.basic.commons.ICacheKProvider
-import com.tencent.mmkv.MMKV
+import com.mozhimen.basick.elemk.kotlin.cons.CSuppress
+import com.mozhimen.basick.utilk.bases.BaseUtilK
+import com.mozhimen.basick.postk.crypto.PostKCryptoAES
+import com.mozhimen.basick.postk.crypto.mos.MCryptoAESConfig
+import com.mozhimen.basick.utilk.android.content.UtilKContext
 import java.lang.IllegalArgumentException
 
 /**
- * @ClassName CacheKMMKVProvider
+ * @ClassName CacheKSPProvider
  * @Description TODO
- * @Author Mozhimen & Kolin Zhao
- * @Date 2023/9/27 16:41
+ * @Author mozhimen / Kolin Zhao
+ * @Date 2022/5/25 16:35
  * @Version 1.0
  */
-class CacheKMMKVProvider(mmkvName: String, isMultiProcess: Boolean) : com.mozhimen.cachek.basic.commons.ICacheKProvider {
+class CacheKSPProvider(spName: String) : com.mozhimen.cachek.basic.commons.ICacheKProvider, BaseUtilK() {
 
-    private val _mmkv: MMKV by lazy { if (isMultiProcess) MMKV.mmkvWithID(mmkvName, MMKV.MULTI_PROCESS_MODE) else MMKV.mmkvWithID(mmkvName) }
+    private val _sharedPreferences: SharedPreferences by lazy { UtilKContext.getSharedPreferences(_context, spName, Context.MODE_PRIVATE) }
 
     /////////////////////////////////////////////////////////////////////
 
-    fun getEditor(): SharedPreferences.Editor =
-        _mmkv.edit()
+    fun getEditor(): Editor =
+        _sharedPreferences.edit()
 
-    fun <T> getPutEditor(key: String, value: T): SharedPreferences.Editor =
+    fun <T> getPutEditor(key: String, value: T): Editor =
         when (value) {
-            is Int -> getEditor().putInt(key, value)
-            is Long -> getEditor().putLong(key, value)
             is String -> getEditor().putString(key, value)
             is Boolean -> getEditor().putBoolean(key, value)
+            is Int -> getEditor().putInt(key, value)
+            is Long -> getEditor().putLong(key, value)
             is Float -> getEditor().putFloat(key, value)
             else -> throw IllegalArgumentException("Unknown Type.")
         }
@@ -66,6 +71,11 @@ class CacheKMMKVProvider(mmkvName: String, isMultiProcess: Boolean) : com.mozhim
         getEditor().putStringSet(key, value).commit()
     }
 
+    fun putStringEncryptSync(key: String, value: String) {
+        if (value.isEmpty()) return
+        putObjSync(key, PostKCryptoAES.with(MCryptoAESConfig(secretKey = "5rfj4FVG&Td#$*Jd")).encryptWithBase64(value))
+    }
+
     /////////////////////////////////////////////////////////////////////
 
     override fun <T> putObj(key: String, obj: T) {
@@ -93,23 +103,21 @@ class CacheKMMKVProvider(mmkvName: String, isMultiProcess: Boolean) : com.mozhim
     }
 
     override fun putDouble(key: String, value: Double) {
-        _mmkv.encode(key, value)
-    }
-
-    fun putByteArray(key: String, value: ByteArray) {
-        _mmkv.encode(key, value)
+        putObj(key, java.lang.Double.doubleToRawLongBits(value))
     }
 
     fun putStringSet(key: String, value: Set<String>) {
-        _mmkv.encode(key, value)
+        getEditor().putStringSet(key, value).apply()
     }
 
-    fun putParcelable(key: String, value: Parcelable) {
-        _mmkv.encode(key, value)
+    fun putStringEncrypt(key: String, value: String) {
+        if (value.isEmpty()) return
+        putObj(key, PostKCryptoAES.with(MCryptoAESConfig(secretKey = "5rfj4FVG&Td#$*Jd")).encryptWithBase64(value))
     }
 
     /////////////////////////////////////////////////////////////////////
 
+    @Suppress(CSuppress.UNCHECKED_CAST)
     override fun <T> getObj(key: String, default: T): T =
         when (default) {
             is Int -> getInt(key, default)
@@ -118,82 +126,71 @@ class CacheKMMKVProvider(mmkvName: String, isMultiProcess: Boolean) : com.mozhim
             is Boolean -> getBoolean(key, default)
             is Float -> getFloat(key, default)
             is Double -> getDouble(key, default)
-            is ByteArray -> getByteArray(key, default)
             else -> throw IllegalArgumentException("Unknown Type.")
         } as T
 
     override fun getInt(key: String): Int =
-        _mmkv.decodeInt(key)
+        getInt(key, 0)
 
     override fun getInt(key: String, defaultValue: Int): Int =
-        _mmkv.decodeInt(key, defaultValue)
+        _sharedPreferences.getInt(key, defaultValue)
 
     override fun getLong(key: String): Long =
-        _mmkv.decodeLong(key)
+        getLong(key, 0L)
 
     override fun getLong(key: String, defaultValue: Long): Long =
-        _mmkv.decodeLong(key, defaultValue)
+        _sharedPreferences.getLong(key, defaultValue)
 
     override fun getString(key: String): String =
-        _mmkv.decodeString(key) ?: ""
+        getString(key, "")
 
     override fun getString(key: String, defaultValue: String): String =
-        _mmkv.decodeString(key, defaultValue) ?: ""
+        _sharedPreferences.getString(key, defaultValue) ?: defaultValue
 
     override fun getBoolean(key: String): Boolean =
-        _mmkv.decodeBool(key)
+        getBoolean(key, false)
 
     override fun getBoolean(key: String, defaultValue: Boolean): Boolean =
-        _mmkv.decodeBool(key, defaultValue)
+        _sharedPreferences.getBoolean(key, defaultValue)
 
     override fun getFloat(key: String): Float =
-        _mmkv.decodeFloat(key)
+        getFloat(key, 0F)
 
     override fun getFloat(key: String, defaultValue: Float): Float =
-        _mmkv.decodeFloat(key, defaultValue)
+        _sharedPreferences.getFloat(key, defaultValue)
 
     override fun getDouble(key: String): Double =
-        _mmkv.decodeDouble(key)
+        getDouble(key, 0.0)
 
     override fun getDouble(key: String, defaultValue: Double): Double =
-        _mmkv.decodeDouble(key, defaultValue)
-
-    fun getByteArray(key: String): ByteArray? =
-        _mmkv.decodeBytes(key)
-
-    fun getByteArray(key: String, defaultValue: ByteArray): ByteArray? =
-        _mmkv.decodeBytes(key, defaultValue)
+        java.lang.Double.longBitsToDouble(_sharedPreferences.getLong(key, defaultValue.toLong()))
 
     fun getStringSet(key: String): Set<String>? =
-        _mmkv.decodeStringSet(key)
+        getStringSet(key, null)
 
-    fun getStringSet(key: String, defaultValue: Set<String>): Set<String>? =
-        _mmkv.decodeStringSet(key, defaultValue)
+    fun getStringSet(key: String, defaultValue: Set<String>?): Set<String>? =
+        _sharedPreferences.getStringSet(key, defaultValue)
 
-    fun <T : Parcelable> getParcelable(key: String, clazz: Class<T>): T? =
-        _mmkv.decodeParcelable(key, clazz)
-
-    fun <T : Parcelable> getParcelable(key: String, clazz: Class<T>, defaultValue: T): T? =
-        _mmkv.decodeParcelable(key, clazz, defaultValue)
+    fun getStringDecrypt(key: String, defaultValue: String = ""): String {
+        val valueDecrypted = _sharedPreferences.getString(key, null) ?: return defaultValue
+        return PostKCryptoAES.with(MCryptoAESConfig(secretKey = "5rfj4FVG&Td#$*Jd")).decryptWithBase64(valueDecrypted)
+    }
 
     fun getAll(): MutableMap<String, *> =
-        _mmkv.all
+        _sharedPreferences.all
 
     /////////////////////////////////////////////////////////////////////
 
     fun contains(key: String): Boolean =
-        _mmkv.containsKey(key)
+        _sharedPreferences.contains(key)
 
     fun remove(key: String) {
         if (contains(key))
             getEditor().remove(key).apply()
     }
 
-    fun removeAllOf(vararg key: String) {
-        _mmkv.removeValuesForKeys(key)
-    }
-
     override fun clear() {
-        _mmkv.edit().clear().apply()
+        getEditor().clear().apply()
     }
 }
+

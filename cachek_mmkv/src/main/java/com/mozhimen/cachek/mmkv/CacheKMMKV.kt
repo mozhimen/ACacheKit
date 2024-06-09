@@ -1,7 +1,7 @@
 package com.mozhimen.cachek.mmkv
 
 import android.content.Context
-import com.mozhimen.basick.cachek.commons.ICacheK
+import com.mozhimen.cachek.basic.commons.ICacheK
 import com.mozhimen.cachek.mmkv.helpers.CacheKMMKVProvider
 import com.mozhimen.basick.lintk.optins.OApiInit_InApplication
 import com.tencent.mmkv.MMKV
@@ -15,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap
  * @Version 1.0
  */
 @OApiInit_InApplication
-class CacheKMMKV : ICacheK<CacheKMMKVProvider> {
+class CacheKMMKV : com.mozhimen.cachek.basic.commons.ICacheK<CacheKMMKVProvider> {
     companion object {
         @JvmStatic
         val instance = INSTANCE.holder

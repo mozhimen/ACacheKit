@@ -26,8 +26,19 @@ include ':cachek_rx_preferences2'
 include ':cachek_flow_preferences'
 include ':cachek_harmony'
 include ':cachek_room_paging'
+include ':cachek_basic'
+include ':cachek_sharedpreferences'
+include ':cachek_room'
+include ':cachek_datastore'
 //SwiftKit
 include ':SwiftKit'
 project(':SwiftKit').projectDir = new File("D:\\WorkSpace\\GitHub\\SwiftKit")
 include ':SwiftKit:basick'
+//ALibKit_Jetpack
+include ':ALibKit_Jetpack'
+project(':ALibKit_Jetpack').projectDir = new File("D:\\WorkSpace\\GitHub\\ALibKit_Jetpack")
+include ':ALibKit_Jetpack:room'
+include ':ALibKit_Jetpack:datastore'
 
+
+include ':cachek_serial'
