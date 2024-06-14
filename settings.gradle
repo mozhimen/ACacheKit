@@ -30,6 +30,7 @@ include ':cachek_basic'
 include ':cachek_sharedpreferences'
 include ':cachek_room'
 include ':cachek_datastore'
+include ':cachek_serial'
 //SwiftKit
 include ':SwiftKit'
 project(':SwiftKit').projectDir = new File("D:\\WorkSpace\\GitHub\\SwiftKit")
@@ -41,4 +42,3 @@ include ':ALibKit_Jetpack:room'
 include ':ALibKit_Jetpack:datastore'
 
 
-include ':cachek_serial'

@@ -1,6 +1,7 @@
 package com.mozhimen.cachek.datastore
 
 import com.mozhimen.cachek.datastore.helpers.CacheKDSProvider
+import com.mozhimen.cachek.datastore.helpers.CacheKDSProviderMultiProcess
 import java.util.concurrent.ConcurrentHashMap
 
 /**
@@ -22,10 +23,17 @@ class CacheKDS : com.mozhimen.cachek.basic.commons.ICacheK<CacheKDSProvider> {
 
     ////////////////////////////////////////////////////////////////////////////
 
-    override fun with(name: String): CacheKDSProvider {
+    override fun with(name: String): CacheKDSProvider =
+        with(name, false)
+
+    fun with(name: String, processEnable: Boolean): CacheKDSProvider {
         var sp = _dsMap[name]
         if (sp == null) {
-            sp = CacheKDSProvider(name)
+            sp = if (processEnable) {
+                CacheKDSProviderMultiProcess(name)
+            } else {
+                CacheKDSProvider(name)
+            }
             _dsMap[name] = sp
         }
         return sp

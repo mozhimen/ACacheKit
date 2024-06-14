@@ -10,9 +10,9 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.runBlocking
 
-class CacheKDSProvider(dsName: String) : com.mozhimen.cachek.basic.commons.ICacheKProvider, BaseUtilK() {
+open class CacheKDSProvider(dsName: String) : com.mozhimen.cachek.basic.commons.ICacheKProvider, BaseUtilK() {
     private val Context._dataStore: DataStore<Preferences> by preferencesDataStore(name = dsName)
-    val dataStore: DataStore<Preferences> by lazy { _context._dataStore }
+    open val dataStore: DataStore<Preferences> by lazy { _context._dataStore }
 
     /////////////////////////////////////////////////////////////////////
 
