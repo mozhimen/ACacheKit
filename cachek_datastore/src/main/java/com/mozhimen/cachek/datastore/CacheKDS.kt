@@ -39,6 +39,9 @@ class CacheKDS : com.mozhimen.cachek.basic.commons.ICacheK<CacheKDSProvider> {
         return sp
     }
 
+    fun with_ofMultiProcess(name: String): CacheKDSProvider =
+        with(name, true)
+
     ////////////////////////////////////////////////////////////////////////////
 
     private object INSTANCE {

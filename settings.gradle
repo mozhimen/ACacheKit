@@ -31,10 +31,12 @@ include ':cachek_sharedpreferences'
 include ':cachek_room'
 include ':cachek_datastore'
 include ':cachek_serial'
+include ':cachek_datastore_test'
 //SwiftKit
 include ':SwiftKit'
 project(':SwiftKit').projectDir = new File("D:\\WorkSpace\\GitHub\\SwiftKit")
 include ':SwiftKit:basick'
+include ':SwiftKit:xmlk'
 //ALibKit_Jetpack
 include ':ALibKit_Jetpack'
 project(':ALibKit_Jetpack').projectDir = new File("D:\\WorkSpace\\GitHub\\ALibKit_Jetpack")
