@@ -31,7 +31,7 @@ android {
 }
 
 dependencies {
-    api "androidx.room:room-paging:2.5.2"
+    api "androidx.room:room-paging:2.6.1"
     implementation project(':SwiftKit:basick')
 
     testImplementation 'junit:junit:4.13.2'
