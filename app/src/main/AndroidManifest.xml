@@ -21,6 +21,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".UtilKGenerateNoActivity"
+            android:exported="false" />
+        <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+        <!-- cachek -->
+        <activity
+            android:name=".CacheKActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CacheKDSActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CacheKRMActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CacheKSPActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

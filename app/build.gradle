@@ -31,9 +31,19 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures{
+        dataBinding true
+    }
 }
 
 dependencies {
+    implementation project(':SwiftKit:basick')
+    implementation project(':SwiftKit:xmlk')
+    implementation project(':cachek_basic')
+    implementation project(':cachek_datastore')
+    implementation project(':cachek_room')
+    implementation project(':cachek_sharedpreferences')
+    implementation project(':cachek_serial')
     //test
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
