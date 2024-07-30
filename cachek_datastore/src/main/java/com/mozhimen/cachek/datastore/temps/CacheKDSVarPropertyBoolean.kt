@@ -1,6 +1,7 @@
 package com.mozhimen.cachek.datastore.temps
 
 import com.mozhimen.cachek.basic.bases.BaseCacheKVarPropertyBoolean
+import com.mozhimen.cachek.basic.bases.BaseCacheKVarPropertySyncBoolean
 import com.mozhimen.cachek.datastore.helpers.CacheKDSProvider
 
 
@@ -13,4 +14,4 @@ import com.mozhimen.cachek.datastore.helpers.CacheKDSProvider
  */
 class CacheKDSVarPropertyBoolean(
     cacheKDSProvider: CacheKDSProvider, key: String, default: Boolean = false
-) : BaseCacheKVarPropertyBoolean<CacheKDSProvider>(cacheKDSProvider, key, default)
+) : BaseCacheKVarPropertySyncBoolean<CacheKDSProvider>(cacheKDSProvider, key, default)

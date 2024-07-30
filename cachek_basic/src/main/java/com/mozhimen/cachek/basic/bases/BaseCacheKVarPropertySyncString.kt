@@ -12,19 +12,24 @@ import kotlin.reflect.KProperty
  * @Date 2023/3/13 15:17
  * @Version 1.0
  */
-open class BaseCacheKVarPropertyString<P : ICacheKProvider>(
+open class BaseCacheKVarPropertySyncString<P : ICacheKProvider>(
     private val _cacheKProvider: P,
     private val _key: String,
     private val _default: String = ""
 ) : ReadWriteProperty<Any?, String> {
+    @Volatile
     private var _field = _cacheKProvider.getString(_key, _default)
 
     override fun getValue(thisRef: Any?, property: KProperty<*>): String {
-        return _field
+        return synchronized(this) {
+            _field
+        }
     }
 
     override fun setValue(thisRef: Any?, property: KProperty<*>, value: String) {
-        _field = value
-        _cacheKProvider.putString(_key, value)
+        synchronized(this) {
+            _field = value
+            _cacheKProvider.putString(_key, value)
+        }
     }
 }

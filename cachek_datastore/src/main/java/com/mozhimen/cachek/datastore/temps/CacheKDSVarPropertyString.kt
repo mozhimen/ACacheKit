@@ -1,6 +1,7 @@
 package com.mozhimen.cachek.datastore.temps
 
 import com.mozhimen.cachek.basic.bases.BaseCacheKVarPropertyString
+import com.mozhimen.cachek.basic.bases.BaseCacheKVarPropertySyncString
 import com.mozhimen.cachek.datastore.helpers.CacheKDSProvider
 
 
@@ -13,4 +14,4 @@ import com.mozhimen.cachek.datastore.helpers.CacheKDSProvider
  */
 class CacheKDSVarPropertyString(
     cacheKDSProvider: CacheKDSProvider, key: String, default: String = ""
-) : BaseCacheKVarPropertyString<CacheKDSProvider>(cacheKDSProvider,key,default)
+) : BaseCacheKVarPropertySyncString<CacheKDSProvider>(cacheKDSProvider,key,default)

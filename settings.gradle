@@ -31,6 +31,7 @@ include ':cachek_room'
 include ':cachek_datastore'
 include ':cachek_serial'
 include ':cachek_datastore_test'
+include ':cachek_room_paging'
 //SwiftKit
 include ':SwiftKit'
 project(':SwiftKit').projectDir = new File("D:\\WorkSpace\\GitHub\\SwiftKit")

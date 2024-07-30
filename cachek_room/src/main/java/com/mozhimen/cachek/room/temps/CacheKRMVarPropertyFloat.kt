@@ -1,6 +1,7 @@
 package com.mozhimen.cachek.room.temps
 
 import com.mozhimen.cachek.basic.bases.BaseCacheKVarPropertyFloat
+import com.mozhimen.cachek.basic.bases.BaseCacheKVarPropertySyncFloat
 import com.mozhimen.cachek.room.CacheKRM
 
 
@@ -13,4 +14,4 @@ import com.mozhimen.cachek.room.CacheKRM
  */
 class CacheKRMVarPropertyFloat(
     cacheKRMProvider: CacheKRM, key: String, default: Float = 0f
-) : BaseCacheKVarPropertyFloat<CacheKRM>(cacheKRMProvider, key, default)
+) : BaseCacheKVarPropertySyncFloat<CacheKRM>(cacheKRMProvider, key, default)

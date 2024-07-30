@@ -1,6 +1,7 @@
 package com.mozhimen.cachek.room.temps
 
 import com.mozhimen.cachek.basic.bases.BaseCacheKVarPropertyDouble
+import com.mozhimen.cachek.basic.bases.BaseCacheKVarPropertySyncDouble
 import com.mozhimen.cachek.room.CacheKRM
 
 
@@ -13,4 +14,4 @@ import com.mozhimen.cachek.room.CacheKRM
  */
 class CacheKRMVarPropertyDouble(
     cacheKRMProvider: CacheKRM, key: String, default: Double = 0.0
-) : BaseCacheKVarPropertyDouble<CacheKRM>(cacheKRMProvider, key, default)
+) : BaseCacheKVarPropertySyncDouble<CacheKRM>(cacheKRMProvider, key, default)
