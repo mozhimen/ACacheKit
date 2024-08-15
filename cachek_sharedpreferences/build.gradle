@@ -32,6 +32,7 @@ android {
 
 dependencies {
     implementation project(':SwiftKit:basick')
+    implementation project(':ACryptoKit:cryptok_basic')
     api project(project.path.replace(project.name, '') + ':cachek_basic')
 
     testImplementation 'junit:junit:4.13.2'
