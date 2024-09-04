@@ -3,8 +3,8 @@ package com.mozhimen.cachek.test
 import android.os.Bundle
 import com.mozhimen.cachek.datastore.CacheKDS
 import com.mozhimen.cachek.datastore.temps.CacheKDSVarPropertyString
-import com.mozhimen.basick.elemk.androidx.appcompat.bases.databinding.BaseActivityVDB
-import com.mozhimen.basick.utilk.android.widget.showToast
+import com.mozhimen.mvvmk.bases.activity.databinding.BaseActivityVDB
+import com.mozhimen.kotlin.utilk.android.widget.showToast
 import com.mozhimen.cachek.test.databinding.ActivityCachekDsBinding
 
 class CacheKDSActivity : BaseActivityVDB<ActivityCachekDsBinding>() {

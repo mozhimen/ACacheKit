@@ -1,7 +1,7 @@
 package com.mozhimen.cachek.test
 
 import android.os.Bundle
-import com.mozhimen.basick.elemk.androidx.appcompat.bases.databinding.BaseActivityVDB
+import com.mozhimen.mvvmk.bases.activity.databinding.BaseActivityVDB
 import com.mozhimen.cachek.serial.UtilKStrSerialNo
 import com.mozhimen.cachek.test.databinding.ActivityUtilkGenerateNoBinding
 

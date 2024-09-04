@@ -3,7 +3,7 @@ package com.mozhimen.cachek.mmkv
 import android.content.Context
 import com.mozhimen.cachek.basic.commons.ICacheK
 import com.mozhimen.cachek.mmkv.helpers.CacheKMMKVProvider
-import com.mozhimen.basick.lintk.optins.OApiInit_InApplication
+import com.mozhimen.kotlin.lintk.optins.OApiInit_InApplication
 import com.tencent.mmkv.MMKV
 import java.util.concurrent.ConcurrentHashMap
 

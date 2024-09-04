@@ -3,9 +3,9 @@ package com.mozhimen.cachek.sharedpreferences.helpers
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.SharedPreferences.Editor
-import com.mozhimen.basick.elemk.kotlin.cons.CSuppress
-import com.mozhimen.basick.utilk.bases.BaseUtilK
-import com.mozhimen.basick.utilk.android.content.UtilKContext
+import com.mozhimen.kotlin.elemk.kotlin.cons.CSuppress
+import com.mozhimen.kotlin.utilk.bases.BaseUtilK
+import com.mozhimen.kotlin.utilk.android.content.UtilKContext
 import com.mozhimen.cryptok.basic.CryptoKAES
 import com.mozhimen.cryptok.basic.mos.MCryptoAESConfig
 import java.lang.IllegalArgumentException

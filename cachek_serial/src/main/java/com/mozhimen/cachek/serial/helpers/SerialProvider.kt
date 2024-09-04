@@ -2,7 +2,7 @@ package com.mozhimen.cachek.serial.helpers
 
 import com.mozhimen.cachek.room.CacheKRM
 import com.mozhimen.cachek.serial.commons.ISerialProvider
-import com.mozhimen.basick.utilk.kotlin.text.UtilKStringsJVM
+import com.mozhimen.kotlin.utilk.kotlin.text.UtilKStringsJVM
 import java.util.Calendar
 import java.util.GregorianCalendar
 import java.util.concurrent.atomic.AtomicLong

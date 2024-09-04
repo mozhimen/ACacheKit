@@ -2,11 +2,11 @@ package com.mozhimen.cachek.datastore.test
 
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
-import com.mozhimen.basick.elemk.androidx.appcompat.bases.viewbinding.BaseActivityVB
-import com.mozhimen.basick.taskk.executor.TaskKExecutor
-import com.mozhimen.basick.taskk.handler.TaskKHandler
-import com.mozhimen.basick.utilk.android.widget.showToast
-import com.mozhimen.basick.utilk.android.widget.value
+import com.mozhimen.mvvmk.bases.activity.viewbinding.BaseActivityVB
+import com.mozhimen.taskk.executor.TaskKExecutor
+import com.mozhimen.kotlin.utilk.android.os.UtilKHandlerWrapper
+import com.mozhimen.kotlin.utilk.android.widget.showToast
+import com.mozhimen.kotlin.utilk.android.widget.value
 import com.mozhimen.cachek.datastore.CacheKDS
 import com.mozhimen.cachek.datastore.test.databinding.ActivityMainBinding
 import kotlinx.coroutines.Dispatchers
@@ -61,7 +61,7 @@ class MainActivity : BaseActivityVB<ActivityMainBinding>() {
     private fun readOnBack2() {
         TaskKExecutor.execute(NAME) {
             val value = CacheKDS.instance.with(NAME, true).getString(SAVE_KEY)
-            TaskKHandler.post {
+            UtilKHandlerWrapper.post {
                 value.showToast()
             }
         }
