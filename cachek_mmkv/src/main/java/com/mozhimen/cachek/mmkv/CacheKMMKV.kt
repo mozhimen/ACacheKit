@@ -15,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap
  * @Version 1.0
  */
 @OApiInit_InApplication
-class CacheKMMKV : com.mozhimen.cachek.basic.commons.ICacheK<CacheKMMKVProvider> {
+class CacheKMMKV : ICacheK<CacheKMMKVProvider> {
     companion object {
         @JvmStatic
         val instance = INSTANCE.holder

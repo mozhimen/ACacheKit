@@ -1,6 +1,6 @@
 package com.mozhimen.cachek.mmkv.impls
 
-import com.mozhimen.basick.cachek.bases.BaseCacheKVarPropertyLong
+import com.mozhimen.cachek.basic.bases.BaseCacheKVarPropertyLong
 import com.mozhimen.cachek.mmkv.helpers.CacheKMMKVProvider
 
 /**

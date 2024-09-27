@@ -2,7 +2,6 @@ package com.mozhimen.cachek.mmkv.helpers
 
 import android.content.SharedPreferences
 import android.os.Parcelable
-import com.mozhimen.cachek.basic.commons.ICacheKProvider
 import com.tencent.mmkv.MMKV
 import java.lang.IllegalArgumentException
 

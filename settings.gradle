@@ -35,6 +35,7 @@ include ':cachek_room_paging'
 //SwiftKit
 include ':SwiftKit'
 project(':SwiftKit').projectDir = new File("D:\\WorkSpace\\GitHub\\SwiftKit")
+include ':SwiftKit:mvvmk'
 include ':SwiftKit:basick'
 include ':SwiftKit:xmlk'
 //ALibKit_Jetpack
@@ -46,6 +47,15 @@ include ':ALibKit_Jetpack:datastore'
 include ':ACryptoKit'
 project(':ACryptoKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ACryptoKit")
 include ':ACryptoKit:cryptok_basic'
+//KUtilKit
+include ':KUtilKit'
+project(':KUtilKit').projectDir = new File("D:\\WorkSpace\\GitHub\\KUtilKit")
+include ':KUtilKit:utilk_android'
+include ':KUtilKit:utilk_kotlin'
+//ATaskKit
+include ':ATaskKit'
+project(':ATaskKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ATaskKit")
+include ':ATaskKit:taskk_executor'
 
 
 
