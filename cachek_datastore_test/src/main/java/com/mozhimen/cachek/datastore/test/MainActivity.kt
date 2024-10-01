@@ -2,7 +2,7 @@ package com.mozhimen.cachek.datastore.test
 
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
-import com.mozhimen.mvvmk.bases.activity.viewbinding.BaseActivityVB
+import com.mozhimen.bindk.bases.activity.viewbinding.BaseActivityVB
 import com.mozhimen.taskk.executor.TaskKExecutor
 import com.mozhimen.kotlin.utilk.android.os.UtilKHandlerWrapper
 import com.mozhimen.kotlin.utilk.android.widget.showToast

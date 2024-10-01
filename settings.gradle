@@ -35,7 +35,7 @@ include ':cachek_room_paging'
 //SwiftKit
 include ':SwiftKit'
 project(':SwiftKit').projectDir = new File("D:\\WorkSpace\\GitHub\\SwiftKit")
-include ':SwiftKit:mvvmk'
+include ':SwiftKit:bindk'
 include ':SwiftKit:basick'
 include ':SwiftKit:xmlk'
 //ALibKit_Jetpack

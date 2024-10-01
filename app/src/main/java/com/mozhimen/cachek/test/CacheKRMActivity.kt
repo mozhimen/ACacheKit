@@ -3,7 +3,7 @@ package com.mozhimen.cachek.test
 import android.os.Bundle
 import com.mozhimen.cachek.room.CacheKRM
 import com.mozhimen.cachek.room.temps.CacheKRMVarPropertyString
-import com.mozhimen.mvvmk.bases.activity.databinding.BaseActivityVDB
+import com.mozhimen.bindk.bases.activity.databinding.BaseActivityVDB
 import com.mozhimen.kotlin.utilk.android.widget.showToast
 import com.mozhimen.cachek.test.databinding.ActivityCachekRmBinding
 
