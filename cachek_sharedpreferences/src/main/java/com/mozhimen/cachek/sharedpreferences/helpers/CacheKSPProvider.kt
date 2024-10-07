@@ -6,8 +6,6 @@ import android.content.SharedPreferences.Editor
 import com.mozhimen.kotlin.elemk.kotlin.cons.CSuppress
 import com.mozhimen.kotlin.utilk.bases.BaseUtilK
 import com.mozhimen.kotlin.utilk.android.content.UtilKContext
-import com.mozhimen.cryptok.basic.CryptoKAES
-import com.mozhimen.cryptok.basic.mos.MCryptoAESConfig
 import java.lang.IllegalArgumentException
 
 /**
@@ -70,10 +68,10 @@ class CacheKSPProvider(spName: String) : com.mozhimen.cachek.basic.commons.ICach
         getEditor().putStringSet(key, value).commit()
     }
 
-    fun putStringEncryptSync(key: String, value: String) {
-        if (value.isEmpty()) return
-        putObjSync(key, CryptoKAES.with(MCryptoAESConfig(secretKey = "5rfj4FVG&Td#$*Jd")).encryptWithBase64(value))
-    }
+//    fun putStringEncryptSync(key: String, value: String) {
+//        if (value.isEmpty()) return
+//        putObjSync(key, CryptoKAES.with(MCryptoAESConfig(secretKey = "5rfj4FVG&Td#$*Jd")).encryptWithBase64(value))
+//    }
 
     /////////////////////////////////////////////////////////////////////
 
@@ -109,10 +107,10 @@ class CacheKSPProvider(spName: String) : com.mozhimen.cachek.basic.commons.ICach
         getEditor().putStringSet(key, value).apply()
     }
 
-    fun putStringEncrypt(key: String, value: String) {
-        if (value.isEmpty()) return
-        putObj(key, CryptoKAES.with(MCryptoAESConfig(secretKey = "5rfj4FVG&Td#$*Jd")).encryptWithBase64(value))
-    }
+//    fun putStringEncrypt(key: String, value: String) {
+//        if (value.isEmpty()) return
+//        putObj(key, CryptoKAES.with(MCryptoAESConfig(secretKey = "5rfj4FVG&Td#$*Jd")).encryptWithBase64(value))
+//    }
 
     /////////////////////////////////////////////////////////////////////
 
@@ -169,11 +167,6 @@ class CacheKSPProvider(spName: String) : com.mozhimen.cachek.basic.commons.ICach
 
     fun getStringSet(key: String, defaultValue: Set<String>?): Set<String>? =
         _sharedPreferences.getStringSet(key, defaultValue)
-
-    fun getStringDecrypt(key: String, defaultValue: String = ""): String {
-        val valueDecrypted = _sharedPreferences.getString(key, null) ?: return defaultValue
-        return CryptoKAES.with(MCryptoAESConfig(secretKey = "5rfj4FVG&Td#$*Jd")).decryptWithBase64(valueDecrypted)
-    }
 
     fun getAll(): MutableMap<String, *> =
         _sharedPreferences.all
