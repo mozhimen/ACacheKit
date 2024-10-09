@@ -15,6 +15,7 @@ interface ICacheKProvider {
     fun putLong(key: String, value: Long)
     fun putFloat(key: String, value: Float)
     fun putDouble(key: String, value: Double)
+    fun putStringSet(key: String, value: Set<String>)
 
     /////////////////////////////////////////////////////////////////////
 
@@ -25,6 +26,7 @@ interface ICacheKProvider {
     fun getBoolean(key: String): Boolean
     fun getFloat(key: String): Float
     fun getDouble(key: String): Double
+    fun getStringSet(key: String): Set<String>
 
     /////////////////////////////////////////////////////////////////////
 
@@ -34,6 +36,7 @@ interface ICacheKProvider {
     fun getBoolean(key: String, defaultValue: Boolean): Boolean
     fun getFloat(key: String, defaultValue: Float): Float
     fun getDouble(key: String, defaultValue: Double): Double
+    fun getStringSet(key: String, defaultValue: Set<String>): Set<String>
 
     fun clear()
 }

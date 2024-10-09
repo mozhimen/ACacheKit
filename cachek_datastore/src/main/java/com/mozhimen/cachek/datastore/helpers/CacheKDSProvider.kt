@@ -96,7 +96,7 @@ open class CacheKDSProvider(dsName: String) : com.mozhimen.cachek.basic.commons.
         runBlocking { putDoubleAsync(key, value) }
     }
 
-    fun putStringSet(key: String, value: Set<String>) {
+    override fun putStringSet(key: String, value: Set<String>) {
         runBlocking { putStringSetAsync(key, value) }
     }
 
@@ -152,8 +152,10 @@ open class CacheKDSProvider(dsName: String) : com.mozhimen.cachek.basic.commons.
     override fun getDouble(key: String, defaultValue: Double): Double =
         runBlocking { return@runBlocking dataStore.data.map { it[doublePreferencesKey(key)] ?: defaultValue }.first() }
 
+    override fun getStringSet(key: String): Set<String> =
+        getStringSet(key, emptySet())
 
-    fun getStringSet(key: String, defaultValue: Set<String> = emptySet()): Set<String> =
+    override fun getStringSet(key: String, defaultValue: Set<String>): Set<String> =
         runBlocking { return@runBlocking dataStore.data.map { it[stringSetPreferencesKey(key)] ?: defaultValue }.first() }
 
     /////////////////////////////////////////////////////////////////////

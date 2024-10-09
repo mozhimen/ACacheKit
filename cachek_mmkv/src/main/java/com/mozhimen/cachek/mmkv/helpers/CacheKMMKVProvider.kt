@@ -99,7 +99,7 @@ class CacheKMMKVProvider(mmkvName: String, isMultiProcess: Boolean) : com.mozhim
         _mmkv.encode(key, value)
     }
 
-    fun putStringSet(key: String, value: Set<String>) {
+    override fun putStringSet(key: String, value: Set<String>) {
         _mmkv.encode(key, value)
     }
 
@@ -163,11 +163,11 @@ class CacheKMMKVProvider(mmkvName: String, isMultiProcess: Boolean) : com.mozhim
     fun getByteArray(key: String, defaultValue: ByteArray): ByteArray? =
         _mmkv.decodeBytes(key, defaultValue)
 
-    fun getStringSet(key: String): Set<String>? =
-        _mmkv.decodeStringSet(key)
+    override fun getStringSet(key: String): Set<String> =
+        _mmkv.decodeStringSet(key) ?: emptySet()
 
-    fun getStringSet(key: String, defaultValue: Set<String>): Set<String>? =
-        _mmkv.decodeStringSet(key, defaultValue)
+    override fun getStringSet(key: String, defaultValue: Set<String>): Set<String> =
+        _mmkv.decodeStringSet(key, defaultValue) ?: defaultValue
 
     fun <T : Parcelable> getParcelable(key: String, clazz: Class<T>): T? =
         _mmkv.decodeParcelable(key, clazz)

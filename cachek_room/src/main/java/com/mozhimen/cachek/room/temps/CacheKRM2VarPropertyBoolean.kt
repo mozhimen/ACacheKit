@@ -13,6 +13,6 @@ import com.mozhimen.cachek.room.commons.ICacheKRMProvider
  * @Date 2023/3/13 15:17
  * @Version 1.0
  */
-class CacheKRMVarPropertyBoolean(
+class CacheKRM2VarPropertyBoolean(
     cacheKRMProvider: ICacheKRMProvider, key: String, default: Boolean = false
 ) : BaseCacheKVarPropertySyncBoolean<ICacheKRMProvider>(cacheKRMProvider, key, default)

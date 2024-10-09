@@ -103,7 +103,7 @@ class CacheKSPProvider(spName: String) : com.mozhimen.cachek.basic.commons.ICach
         putObj(key, java.lang.Double.doubleToRawLongBits(value))
     }
 
-    fun putStringSet(key: String, value: Set<String>) {
+    override fun putStringSet(key: String, value: Set<String>) {
         getEditor().putStringSet(key, value).apply()
     }
 
@@ -162,11 +162,11 @@ class CacheKSPProvider(spName: String) : com.mozhimen.cachek.basic.commons.ICach
     override fun getDouble(key: String, defaultValue: Double): Double =
         java.lang.Double.longBitsToDouble(_sharedPreferences.getLong(key, defaultValue.toLong()))
 
-    fun getStringSet(key: String): Set<String>? =
-        getStringSet(key, null)
+    override fun getStringSet(key: String): Set<String> =
+        getStringSet(key, emptySet())
 
-    fun getStringSet(key: String, defaultValue: Set<String>?): Set<String>? =
-        _sharedPreferences.getStringSet(key, defaultValue)
+    override fun getStringSet(key: String, defaultValue: Set<String>): Set<String> =
+        _sharedPreferences.getStringSet(key, defaultValue)?: emptySet()
 
     fun getAll(): MutableMap<String, *> =
         _sharedPreferences.all

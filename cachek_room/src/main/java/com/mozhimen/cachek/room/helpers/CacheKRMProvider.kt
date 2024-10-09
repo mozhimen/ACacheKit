@@ -1,24 +1,26 @@
-package com.mozhimen.cachek.room
+package com.mozhimen.cachek.room.helpers
 
+import com.mozhimen.cachek.basic.commons.ICacheKProvider
 import com.mozhimen.cachek.room.commons.CacheKRMDatabase
 import com.mozhimen.cachek.room.commons.ICacheKRMProvider
-import com.mozhimen.cachek.room.mos.MCacheKRM
+import com.mozhimen.cachek.room.mos.MCacheKRM2
 import com.mozhimen.kotlin.elemk.kotlin.cons.CSuppress
-import com.mozhimen.kotlin.utilk.bases.BaseUtilK
-import com.mozhimen.kotlin.utilk.kotlin.bytes2obj
 import com.mozhimen.kotlin.utilk.android.util.e
+import com.mozhimen.kotlin.utilk.bases.BaseUtilK
 import com.mozhimen.kotlin.utilk.kotlin.UtilKT
+import com.mozhimen.kotlin.utilk.kotlin.bytes2obj
 
 /**
- * @ClassName CacheK
+ * @ClassName CacheKRMProvider
  * @Description TODO
- * @Author Kolin Zhao / Mozhimen
+ * @Author mozhimen
+ * @Date 2024/10/9
  * @Version 1.0
  */
-object CacheKRM : BaseUtilK(), ICacheKRMProvider {
+class CacheKRMProvider(private val _rmName: String) : ICacheKRMProvider, BaseUtilK() {
     override fun <T> putObj(key: String, obj: T) {
-        val cache = MCacheKRM(key, UtilKT.t2bytes(obj) ?: run { "serialize fail!".e(TAG);return })
-        CacheKRMDatabase.cacheKDao().saveCache(cache)
+        val cache = MCacheKRM2(_rmName, key, UtilKT.t2bytes(obj) ?: run { "serialize fail!".e(TAG);return })
+        CacheKRMDatabase.cacheKDao2().saveCache(cache)
     }
 
     override fun putString(key: String, value: String) {
@@ -53,7 +55,7 @@ object CacheKRM : BaseUtilK(), ICacheKRMProvider {
 
     @Suppress(CSuppress.UNCHECKED_CAST)
     override fun <T> getObj(key: String, default: T): T {
-        val cache = CacheKRMDatabase.cacheKDao().getCache(key)
+        val cache = CacheKRMDatabase.cacheKDao2().getCache(_rmName,key)
         return ((if (cache?.data != null) cache.data.bytes2obj() else null) as? T?) ?: default
     }
 
@@ -101,9 +103,9 @@ object CacheKRM : BaseUtilK(), ICacheKRMProvider {
     override fun getStringSet(key: String, defaultValue: Set<String>): Set<String> {
         return try {
             val strSet: String = getObj(key, "")
-            if (strSet.isNotEmpty()){
+            if (strSet.isNotEmpty()) {
                 strSet.split(",").toSet()
-            }else
+            } else
                 defaultValue
         } catch (e: Exception) {
             defaultValue
@@ -113,14 +115,14 @@ object CacheKRM : BaseUtilK(), ICacheKRMProvider {
     /////////////////////////////////////////////////////////////////////
 
     fun contains(key: String): Boolean =
-        CacheKRMDatabase.cacheKDao().getCache(key) != null
+        CacheKRMDatabase.cacheKDao2().getCache(_rmName,key) != null
 
     fun remove(key: String) {
         if (contains(key))
-            CacheKRMDatabase.cacheKDao().deleteCacheByKey(key)
+            CacheKRMDatabase.cacheKDao2().deleteCacheByKey(_rmName,key)
     }
 
     override fun clear() {
-        CacheKRMDatabase.cacheKDao().deleteAllCaches()
+        CacheKRMDatabase.cacheKDao2().deleteAllCaches(_rmName)
     }
 }
