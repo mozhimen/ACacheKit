@@ -9,34 +9,5 @@ package com.mozhimen.cachek.basic.commons
  */
 interface ICacheKProvider {
     fun <T> putObj(key: String, obj: T)
-    fun putString(key: String, value: String)
-    fun putBoolean(key: String, value: Boolean)
-    fun putInt(key: String, value: Int)
-    fun putLong(key: String, value: Long)
-    fun putFloat(key: String, value: Float)
-    fun putDouble(key: String, value: Double)
-    fun putStringSet(key: String, value: Set<String>)
-
-    /////////////////////////////////////////////////////////////////////
-
     fun <T> getObj(key: String, default: T): T
-    fun getInt(key: String): Int
-    fun getLong(key: String): Long
-    fun getString(key: String): String
-    fun getBoolean(key: String): Boolean
-    fun getFloat(key: String): Float
-    fun getDouble(key: String): Double
-    fun getStringSet(key: String): Set<String>
-
-    /////////////////////////////////////////////////////////////////////
-
-    fun getInt(key: String, defaultValue: Int): Int
-    fun getLong(key: String, defaultValue: Long): Long
-    fun getString(key: String, defaultValue: String): String
-    fun getBoolean(key: String, defaultValue: Boolean): Boolean
-    fun getFloat(key: String, defaultValue: Float): Float
-    fun getDouble(key: String, defaultValue: Double): Double
-    fun getStringSet(key: String, defaultValue: Set<String>): Set<String>
-
-    fun clear()
 }

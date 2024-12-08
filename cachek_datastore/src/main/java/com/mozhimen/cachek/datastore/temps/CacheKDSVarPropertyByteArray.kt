@@ -11,6 +11,6 @@ import com.mozhimen.cachek.datastore.helpers.CacheKDSProvider
  * @Date 2023/3/13 15:17
  * @Version 1.0
  */
-class CacheKDSVarPropertyFloat(
-    cacheKDSProvider: CacheKDSProvider, default: Float = 0f
-) : BaseCacheKVarPropertySync<CacheKDSProvider,Float>(cacheKDSProvider, default)
+class CacheKDSVarPropertyByteArray(
+    cacheKDSProvider: CacheKDSProvider, default: ByteArray = ByteArray(0)
+) : BaseCacheKVarPropertySync<CacheKDSProvider,ByteArray>(cacheKDSProvider, default)

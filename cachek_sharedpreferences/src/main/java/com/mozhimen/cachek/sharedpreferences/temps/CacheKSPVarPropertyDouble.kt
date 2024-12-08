@@ -1,7 +1,8 @@
 package com.mozhimen.cachek.sharedpreferences.temps
 
-import com.mozhimen.cachek.basic.bases.BaseCacheKVarPropertyDouble
+import com.mozhimen.cachek.basic.bases.BaseCacheKVarProperty
 import com.mozhimen.cachek.sharedpreferences.helpers.CacheKSPProvider
+import kotlin.reflect.KProperty
 
 
 /**
@@ -12,5 +13,13 @@ import com.mozhimen.cachek.sharedpreferences.helpers.CacheKSPProvider
  * @Version 1.0
  */
 class CacheKSPVarPropertyDouble(
-    cacheKSPProvider: CacheKSPProvider, key: String, default: Double = 0.0
-) : BaseCacheKVarPropertyDouble<CacheKSPProvider>(cacheKSPProvider, key, default)
+    cacheKSPProvider: CacheKSPProvider, default: Double = 0.0
+) : BaseCacheKVarProperty<CacheKSPProvider, Double>(cacheKSPProvider, default) {
+    override fun getValue(thisRef: Any?, property: KProperty<*>): Double =
+        _field ?: _cacheKProvider.getDouble(property.name, _default).also { _field = it }
+
+    override fun setValue(thisRef: Any?, property: KProperty<*>, value: Double) {
+        _field = value
+        _cacheKProvider.putDouble(property.name, value)
+    }
+}

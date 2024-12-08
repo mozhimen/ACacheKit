@@ -29,7 +29,7 @@ object UtilKCacheKSPProviderCrypto {
 
     @JvmStatic
     fun getString_ofCryptoAES(cachekKProvider: ICacheKProvider, key: String, defaultValue: String = "", secretKey: String = "5rfj4FVG&Td#$*Jd"): String {
-        val value = cachekKProvider.getString(key, defaultValue)
+        val value = cachekKProvider.getObj(key, defaultValue)
         return CryptoKAES.with(MCryptoAESConfig(secretKey = secretKey)).decryptWithBase64(value)
     }
 }

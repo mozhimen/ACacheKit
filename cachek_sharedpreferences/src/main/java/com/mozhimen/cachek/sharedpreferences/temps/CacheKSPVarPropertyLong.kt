@@ -1,6 +1,6 @@
 package com.mozhimen.cachek.sharedpreferences.temps
 
-import com.mozhimen.cachek.basic.bases.BaseCacheKVarPropertyLong
+import com.mozhimen.cachek.basic.bases.BaseCacheKVarProperty
 import com.mozhimen.cachek.sharedpreferences.helpers.CacheKSPProvider
 
 
@@ -12,5 +12,5 @@ import com.mozhimen.cachek.sharedpreferences.helpers.CacheKSPProvider
  * @Version 1.0
  */
 class CacheKSPVarPropertyLong(
-    cacheKSPProvider: CacheKSPProvider, key: String, default: Long = 0L
-) : BaseCacheKVarPropertyLong<CacheKSPProvider>(cacheKSPProvider, key, default)
+    cacheKSPProvider: CacheKSPProvider, default: Long = 0L
+) : BaseCacheKVarProperty<CacheKSPProvider, Long>(cacheKSPProvider, default)

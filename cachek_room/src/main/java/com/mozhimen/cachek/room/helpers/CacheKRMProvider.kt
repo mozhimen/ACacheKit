@@ -1,6 +1,5 @@
 package com.mozhimen.cachek.room.helpers
 
-import com.mozhimen.cachek.basic.commons.ICacheKProvider
 import com.mozhimen.cachek.room.commons.CacheKRMDatabase
 import com.mozhimen.cachek.room.commons.ICacheKRMProvider
 import com.mozhimen.cachek.room.mos.MCacheKRM2
@@ -59,6 +58,8 @@ class CacheKRMProvider(private val _rmName: String) : ICacheKRMProvider, BaseUti
         return ((if (cache?.data != null) cache.data.bytes2obj() else null) as? T?) ?: default
     }
 
+    /////////////////////////////////////////////////////////////////////
+
     override fun getInt(key: String): Int =
         getInt(key, 0)
 
@@ -82,42 +83,42 @@ class CacheKRMProvider(private val _rmName: String) : ICacheKRMProvider, BaseUti
 
     /////////////////////////////////////////////////////////////////////
 
-    override fun getInt(key: String, defaultValue: Int): Int =
-        getObj(key, defaultValue)
+    override fun getInt(key: String, default: Int): Int =
+        getObj(key, default)
 
-    override fun getLong(key: String, defaultValue: Long): Long =
-        getObj(key, defaultValue)
+    override fun getLong(key: String, default: Long): Long =
+        getObj(key, default)
 
-    override fun getString(key: String, defaultValue: String): String =
-        getObj(key, defaultValue)
+    override fun getString(key: String, default: String): String =
+        getObj(key, default)
 
-    override fun getBoolean(key: String, defaultValue: Boolean): Boolean =
-        getObj(key, defaultValue)
+    override fun getBoolean(key: String, default: Boolean): Boolean =
+        getObj(key, default)
 
-    override fun getFloat(key: String, defaultValue: Float): Float =
-        getObj(key, defaultValue)
+    override fun getFloat(key: String, default: Float): Float =
+        getObj(key, default)
 
-    override fun getDouble(key: String, defaultValue: Double): Double =
-        getObj(key, defaultValue)
+    override fun getDouble(key: String, default: Double): Double =
+        getObj(key, default)
 
-    override fun getStringSet(key: String, defaultValue: Set<String>): Set<String> {
+    override fun getStringSet(key: String, default: Set<String>): Set<String> {
         return try {
             val strSet: String = getObj(key, "")
             if (strSet.isNotEmpty()) {
                 strSet.split(",").toSet()
             } else
-                defaultValue
+                default
         } catch (e: Exception) {
-            defaultValue
+            default
         }
     }
 
     /////////////////////////////////////////////////////////////////////
 
-    fun contains(key: String): Boolean =
+    override fun contains(key: String): Boolean =
         CacheKRMDatabase.cacheKDao2().getCache(_rmName,key) != null
 
-    fun remove(key: String) {
+    override fun remove(key: String) {
         if (contains(key))
             CacheKRMDatabase.cacheKDao2().deleteCacheByKey(_rmName,key)
     }

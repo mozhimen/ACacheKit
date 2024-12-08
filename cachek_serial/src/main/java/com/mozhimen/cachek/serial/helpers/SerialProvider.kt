@@ -2,7 +2,7 @@ package com.mozhimen.cachek.serial.helpers
 
 import com.mozhimen.cachek.room.CacheKRM
 import com.mozhimen.cachek.serial.commons.ISerialProvider
-import com.mozhimen.kotlin.utilk.kotlin.text.UtilKStringsJVM
+import com.mozhimen.kotlin.utilk.kotlin.text.UtilKStringsJVMWrapper
 import java.util.Calendar
 import java.util.GregorianCalendar
 import java.util.concurrent.atomic.AtomicLong
@@ -43,7 +43,7 @@ class SerialProvider(private val _encodeName: String) : ISerialProvider {
     fun getCodeOfSix(nowNum: Long): String {
         //封装的数字对象，里面 value 加了 volatile关键字，保证了线程安全
         val count = AtomicLong(nowNum)
-        return UtilKStringsJVM.fillStart_of0(count.get(), 6)
+        return UtilKStringsJVMWrapper.format_fillStart0(count.get(), 6)
     }
 
     /**

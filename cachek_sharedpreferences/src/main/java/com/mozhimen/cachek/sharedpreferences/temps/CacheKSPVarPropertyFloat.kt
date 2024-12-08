@@ -1,6 +1,6 @@
 package com.mozhimen.cachek.sharedpreferences.temps
 
-import com.mozhimen.cachek.basic.bases.BaseCacheKVarPropertyFloat
+import com.mozhimen.cachek.basic.bases.BaseCacheKVarProperty
 import com.mozhimen.cachek.sharedpreferences.helpers.CacheKSPProvider
 
 
@@ -12,5 +12,5 @@ import com.mozhimen.cachek.sharedpreferences.helpers.CacheKSPProvider
  * @Version 1.0
  */
 class CacheKSPVarPropertyFloat(
-    cacheKSPProvider: CacheKSPProvider, key: String, default: Float = 0f
-) : BaseCacheKVarPropertyFloat<CacheKSPProvider>(cacheKSPProvider, key, default)
+    cacheKSPProvider: CacheKSPProvider, default: Float = 0f
+) : BaseCacheKVarProperty<CacheKSPProvider,Float>(cacheKSPProvider, default)

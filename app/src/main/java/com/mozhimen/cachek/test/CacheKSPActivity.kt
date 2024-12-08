@@ -10,7 +10,7 @@ import com.mozhimen.cachek.test.databinding.ActivityCachekSpBinding
 class CacheKSPActivity : BaseActivityVDB<ActivityCachekSpBinding>() {
 
     private val _spTestPro by lazy { CacheKSP.instance.with("sp_test") }
-    private var _editStr: String by CacheKSPVarPropertyString(_spTestPro, "editStr", "")
+    private var _editStr: String by CacheKSPVarPropertyString(_spTestPro, "")
 
     override fun initView(savedInstanceState: Bundle?) {
         vdb.cachekSpEdit.setText(_editStr)

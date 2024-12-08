@@ -3,7 +3,7 @@ package com.mozhimen.cachek.serial
 import com.mozhimen.cachek.room.CacheKRM
 import com.mozhimen.kotlin.utilk.bases.BaseUtilK
 import com.mozhimen.kotlin.utilk.java.util.UtilKCalendar
-import com.mozhimen.kotlin.utilk.kotlin.text.UtilKStringsJVM
+import com.mozhimen.kotlin.utilk.kotlin.text.UtilKStringsJVMWrapper
 import java.util.concurrent.atomic.AtomicLong
 
 
@@ -45,7 +45,7 @@ object UtilKStrSerialNo : BaseUtilK() {
     fun getStrNoComplementBy0(nowNo: Long, bit: Int): String {
         //封装的数字对象，里面 value 加了 volatile关键字，保证了线程安全
         val count = AtomicLong(nowNo)
-        return UtilKStringsJVM.fillStart_of0(count.get(), bit)
+        return UtilKStringsJVMWrapper.format_fillStart0(count.get(), bit)
     }
 
     /**

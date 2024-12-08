@@ -1,6 +1,6 @@
 package com.mozhimen.cachek.mmkv.impls
 
-import com.mozhimen.cachek.basic.bases.BaseCacheKVarPropertyFloat
+import com.mozhimen.cachek.basic.bases.BaseCacheKVarProperty
 import com.mozhimen.cachek.mmkv.helpers.CacheKMMKVProvider
 
 
@@ -12,5 +12,5 @@ import com.mozhimen.cachek.mmkv.helpers.CacheKMMKVProvider
  * @Version 1.0
  */
 class CacheKMMKVVarPropertyFloat(
-    cacheKMMKVProvider: CacheKMMKVProvider, key: String, default: Float = 0f
-) : BaseCacheKVarPropertyFloat<CacheKMMKVProvider>(cacheKMMKVProvider, key, default)
+    cacheKMMKVProvider: CacheKMMKVProvider, default: Float = 0f
+) : BaseCacheKVarProperty<CacheKMMKVProvider, Float>(cacheKMMKVProvider, default)

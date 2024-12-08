@@ -2,14 +2,13 @@ package com.mozhimen.cachek.test
 
 import android.os.Bundle
 import com.mozhimen.bindk.bases.viewdatabinding.activity.BaseActivityVDB
-import com.mozhimen.cachek.room.CacheKRM
 import com.mozhimen.cachek.room.CacheKRM2
-import com.mozhimen.cachek.room.temps.CacheKRMVarPropertyString
+import com.mozhimen.cachek.room.temps.CacheKRM2VarPropertyString
 import com.mozhimen.kotlin.utilk.android.widget.showToast
 import com.mozhimen.cachek.test.databinding.ActivityCachekRmBinding
 
 class CacheKRMActivity : BaseActivityVDB<ActivityCachekRmBinding>() {
-    private var _editStr: String by CacheKRMVarPropertyString(CacheKRM2.instance.with("123")/*或者CacheKRM*/, "editStr", "")
+    private var _editStr: String by CacheKRM2VarPropertyString(CacheKRM2.instance.with("123")/*或者CacheKRM*/, "")
 
     override fun initView(savedInstanceState: Bundle?) {
         vdb.cachekRmEdit.setText(_editStr)

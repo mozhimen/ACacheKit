@@ -5,12 +5,12 @@ import com.mozhimen.cachek.room.commons.ICacheKRMProvider
 
 
 /**
- * @ClassName CacheKRMDelegateBoolean
+ * @ClassName CacheKRMDelegateDouble
  * @Description TODO
  * @Author Mozhimen & Kolin Zhao
  * @Date 2023/3/13 15:17
  * @Version 1.0
  */
-class CacheKRM2VarPropertyBoolean(
-    cacheKRMProvider: ICacheKRMProvider, default: Boolean = false
-) : BaseCacheKVarPropertySync<ICacheKRMProvider, Boolean>(cacheKRMProvider, default)
+class CacheKRM2VarPropertyDouble(
+    cacheKRMProvider: ICacheKRMProvider, default: Double = 0.0
+) : BaseCacheKVarPropertySync<ICacheKRMProvider,Double>(cacheKRMProvider, default)

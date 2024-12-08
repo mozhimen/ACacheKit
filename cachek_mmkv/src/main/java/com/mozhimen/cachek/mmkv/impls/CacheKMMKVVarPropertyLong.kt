@@ -1,6 +1,6 @@
 package com.mozhimen.cachek.mmkv.impls
 
-import com.mozhimen.cachek.basic.bases.BaseCacheKVarPropertyLong
+import com.mozhimen.cachek.basic.bases.BaseCacheKVarProperty
 import com.mozhimen.cachek.mmkv.helpers.CacheKMMKVProvider
 
 /**
@@ -11,5 +11,5 @@ import com.mozhimen.cachek.mmkv.helpers.CacheKMMKVProvider
  * @Version 1.0
  */
 class CacheKMMKVVarPropertyLong(
-    cacheKMMKVProvider: CacheKMMKVProvider, key: String, default: Long = 0L
-) : BaseCacheKVarPropertyLong<CacheKMMKVProvider>(cacheKMMKVProvider, key, default)
+    cacheKMMKVProvider: CacheKMMKVProvider, default: Long = 0L
+) : BaseCacheKVarProperty<CacheKMMKVProvider,Long>(cacheKMMKVProvider, default)

@@ -3,6 +3,7 @@ package com.mozhimen.cachek.sharedpreferences.helpers
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.SharedPreferences.Editor
+import com.mozhimen.cachek.sharedpreferences.commons.ICacheKSPProvider
 import com.mozhimen.kotlin.elemk.kotlin.cons.CSuppress
 import com.mozhimen.kotlin.utilk.bases.BaseUtilK
 import com.mozhimen.kotlin.utilk.android.content.UtilKContext
@@ -15,7 +16,7 @@ import java.lang.IllegalArgumentException
  * @Date 2022/5/25 16:35
  * @Version 1.0
  */
-class CacheKSPProvider(spName: String) : com.mozhimen.cachek.basic.commons.ICacheKProvider, BaseUtilK() {
+class CacheKSPProvider(spName: String) : ICacheKSPProvider, BaseUtilK() {
 
     private val _sharedPreferences: SharedPreferences by lazy { UtilKContext.getSharedPreferences(_context, spName, Context.MODE_PRIVATE) }
 
@@ -31,41 +32,47 @@ class CacheKSPProvider(spName: String) : com.mozhimen.cachek.basic.commons.ICach
             is Int -> getEditor().putInt(key, value)
             is Long -> getEditor().putLong(key, value)
             is Float -> getEditor().putFloat(key, value)
+            is Set<*> -> getEditor().putStringSet(key, value as Set<String>)
             else -> throw IllegalArgumentException("Unknown Type.")
         }
 
     /////////////////////////////////////////////////////////////////////
 
-    fun <T> putObjSync(key: String, value: T) {
-        getPutEditor(key, value).commit()
+    override fun <T> putObjSync(key: String, value: T) {
+        when (value) {
+            is String, Boolean, Int, Long, Float -> getPutEditor(key, value).commit()
+            is Set<*> -> getPutEditor(key, value).commit()
+        }
     }
 
-    fun putIntSync(key: String, value: String) {
+    /////////////////////////////////////////////////////////////////////
+
+    override fun putIntSync(key: String, value: String) {
         putObjSync(key, value)
     }
 
-    fun putLongSync(key: String, value: String) {
+    override fun putLongSync(key: String, value: String) {
         putObjSync(key, value)
     }
 
-    fun putStringSync(key: String, value: String) {
+    override fun putStringSync(key: String, value: String) {
         putObjSync(key, value)
     }
 
-    fun putBooleanSync(key: String, value: String) {
+    override fun putBooleanSync(key: String, value: String) {
         putObjSync(key, value)
     }
 
-    fun putFloatSync(key: String, value: String) {
+    override fun putFloatSync(key: String, value: String) {
         putObjSync(key, value)
     }
 
-    fun putDoubleSync(key: String, value: String) {
+    override fun putStringSetSync(key: String, value: Set<String>) {
         putObjSync(key, value)
     }
 
-    fun putStringSetSync(key: String, value: Set<String>) {
-        getEditor().putStringSet(key, value).commit()
+    override fun putDoubleSync(key: String, value: Double) {
+        putObjSync(key, java.lang.Double.doubleToRawLongBits(value));
     }
 
 //    fun putStringEncryptSync(key: String, value: String) {
@@ -78,6 +85,8 @@ class CacheKSPProvider(spName: String) : com.mozhimen.cachek.basic.commons.ICach
     override fun <T> putObj(key: String, obj: T) {
         getPutEditor(key, obj).apply()
     }
+
+    /////////////////////////////////////////////////////////////////////
 
     override fun putInt(key: String, value: Int) {
         putObj(key, value)
@@ -99,12 +108,12 @@ class CacheKSPProvider(spName: String) : com.mozhimen.cachek.basic.commons.ICach
         putObj(key, value)
     }
 
-    override fun putDouble(key: String, value: Double) {
-        putObj(key, java.lang.Double.doubleToRawLongBits(value))
+    override fun putStringSet(key: String, value: Set<String>) {
+        putObj(key, value)
     }
 
-    override fun putStringSet(key: String, value: Set<String>) {
-        getEditor().putStringSet(key, value).apply()
+    override fun putDouble(key: String, value: Double) {
+        putObj(key, java.lang.Double.doubleToRawLongBits(value))
     }
 
 //    fun putStringEncrypt(key: String, value: String) {
@@ -123,60 +132,75 @@ class CacheKSPProvider(spName: String) : com.mozhimen.cachek.basic.commons.ICach
             is Boolean -> getBoolean(key, default)
             is Float -> getFloat(key, default)
             is Double -> getDouble(key, default)
+            is Set<*> -> getStringSet(key, default as Set<String>)
             else -> throw IllegalArgumentException("Unknown Type.")
         } as T
+
+    /////////////////////////////////////////////////////////////////////
 
     override fun getInt(key: String): Int =
         getInt(key, 0)
 
-    override fun getInt(key: String, defaultValue: Int): Int =
-        _sharedPreferences.getInt(key, defaultValue)
+    override fun getInt(key: String, default: Int): Int =
+        _sharedPreferences.getInt(key, default)
+
+    //
 
     override fun getLong(key: String): Long =
         getLong(key, 0L)
 
-    override fun getLong(key: String, defaultValue: Long): Long =
-        _sharedPreferences.getLong(key, defaultValue)
+    override fun getLong(key: String, default: Long): Long =
+        _sharedPreferences.getLong(key, default)
+
+    //
 
     override fun getString(key: String): String =
         getString(key, "")
 
-    override fun getString(key: String, defaultValue: String): String =
-        _sharedPreferences.getString(key, defaultValue) ?: defaultValue
+    override fun getString(key: String, default: String): String =
+        _sharedPreferences.getString(key, default) ?: default
+
+    //
 
     override fun getBoolean(key: String): Boolean =
         getBoolean(key, false)
 
-    override fun getBoolean(key: String, defaultValue: Boolean): Boolean =
-        _sharedPreferences.getBoolean(key, defaultValue)
+    override fun getBoolean(key: String, default: Boolean): Boolean =
+        _sharedPreferences.getBoolean(key, default)
+
+    //
 
     override fun getFloat(key: String): Float =
         getFloat(key, 0F)
 
-    override fun getFloat(key: String, defaultValue: Float): Float =
-        _sharedPreferences.getFloat(key, defaultValue)
+    override fun getFloat(key: String, default: Float): Float =
+        _sharedPreferences.getFloat(key, default)
+
+    //
 
     override fun getDouble(key: String): Double =
         getDouble(key, 0.0)
 
-    override fun getDouble(key: String, defaultValue: Double): Double =
-        java.lang.Double.longBitsToDouble(_sharedPreferences.getLong(key, defaultValue.toLong()))
+    override fun getDouble(key: String, default: Double): Double =
+        java.lang.Double.longBitsToDouble(_sharedPreferences.getLong(key, default.toLong()))
+
+    //
 
     override fun getStringSet(key: String): Set<String> =
         getStringSet(key, emptySet())
 
-    override fun getStringSet(key: String, defaultValue: Set<String>): Set<String> =
-        _sharedPreferences.getStringSet(key, defaultValue)?: emptySet()
-
-    fun getAll(): MutableMap<String, *> =
-        _sharedPreferences.all
+    override fun getStringSet(key: String, default: Set<String>): Set<String> =
+        _sharedPreferences.getStringSet(key, default) ?: emptySet()
 
     /////////////////////////////////////////////////////////////////////
 
-    fun contains(key: String): Boolean =
+    override fun getAll(): MutableMap<String, *> =
+        _sharedPreferences.all
+
+    override fun contains(key: String): Boolean =
         _sharedPreferences.contains(key)
 
-    fun remove(key: String) {
+    override fun remove(key: String) {
         if (contains(key))
             getEditor().remove(key).apply()
     }

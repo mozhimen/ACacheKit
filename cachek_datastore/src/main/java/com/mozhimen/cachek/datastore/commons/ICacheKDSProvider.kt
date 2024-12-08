@@ -1,15 +1,28 @@
-package com.mozhimen.cachek.room.commons
+package com.mozhimen.cachek.datastore.commons
 
 import com.mozhimen.cachek.basic.commons.ICacheKProvider
 
 /**
- * @ClassName ICacheKRMProvider
+ * @ClassName ICacheKDSProvider
  * @Description TODO
- * @Author mozhimen
- * @Date 2024/10/9
+ * @Author Mozhimen / Kolin Zhao
+ * @Date 2024/12/7 1:12
  * @Version 1.0
  */
-interface ICacheKRMProvider : ICacheKProvider {
+interface ICacheKDSProvider : ICacheKProvider {
+
+    suspend fun <T> putObjAsync(key: String, value: T)
+    suspend fun putIntAsync(key: String, value: Int)
+    suspend fun putLongAsync(key: String, value: Long)
+    suspend fun putStringAsync(key: String, value: String)
+    suspend fun putBooleanAsync(key: String, value: Boolean)
+    suspend fun putFloatAsync(key: String, value: Float)
+    suspend fun putDoubleAsync(key: String, value: Double)
+    suspend fun putStringSetAsync(key: String, value: Set<String>)
+    suspend fun putByteArrayAsync(key: String, value: ByteArray)
+
+    /////////////////////////////////////////////////////////////////////
+
     fun putString(key: String, value: String)
     fun putBoolean(key: String, value: Boolean)
     fun putInt(key: String, value: Int)
@@ -17,6 +30,7 @@ interface ICacheKRMProvider : ICacheKProvider {
     fun putFloat(key: String, value: Float)
     fun putDouble(key: String, value: Double)
     fun putStringSet(key: String, value: Set<String>)
+    fun putByteArray(key: String, value: ByteArray)
 
     /////////////////////////////////////////////////////////////////////
 
@@ -27,6 +41,7 @@ interface ICacheKRMProvider : ICacheKProvider {
     fun getFloat(key: String): Float
     fun getDouble(key: String): Double
     fun getStringSet(key: String): Set<String>
+    fun getByteArray(key: String): ByteArray
 
     /////////////////////////////////////////////////////////////////////
 
@@ -37,10 +52,9 @@ interface ICacheKRMProvider : ICacheKProvider {
     fun getFloat(key: String, default: Float): Float
     fun getDouble(key: String, default: Double): Double
     fun getStringSet(key: String, default: Set<String>): Set<String>
+    fun getByteArray(key: String, default: ByteArray): ByteArray
 
     /////////////////////////////////////////////////////////////////////
 
-    fun contains(key: String): Boolean
-    fun remove(key: String)
     fun clear()
 }

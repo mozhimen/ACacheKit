@@ -11,7 +11,7 @@ import java.io.Serializable
  * @Version 1.0
  */
 @Entity(tableName = "cachekrm2")
-data class MCacheKRM2(
+data class MCacheKRM2 constructor(
     var rmName: String,
     var key: String,
     var data: ByteArray,
