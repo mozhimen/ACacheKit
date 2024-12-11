@@ -1,5 +1,6 @@
 package com.mozhimen.cachek.basic.bases
 
+import com.mozhimen.cachek.basic.commons.ICacheKProperty
 import com.mozhimen.cachek.basic.commons.ICacheKProvider
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
@@ -13,17 +14,16 @@ import kotlin.reflect.KProperty
  * @Version 1.0
  */
 open class BaseCacheKVarPropertySync<P : ICacheKProvider, T> constructor(
-    protected val _cacheKProvider: P,
-    protected open val _default: T
-) : ReadWriteProperty<Any?, T> {
+    cacheKProvider: P,
+    default: T,
+) : BaseCacheKVarProperty<P, T>(cacheKProvider, default), ICacheKProperty {
     @Volatile
-    protected var _field: T? = null
+    override var _field: T? = null
 
-    override fun getValue(thisRef: Any?, property: KProperty<*>): T {
-        return synchronized(this) {
+    override fun getValue(thisRef: Any?, property: KProperty<*>): T =
+        synchronized(this) {
             _field ?: _cacheKProvider.getObj(property.name, _default).also { _field = it }
         }
-    }
 
     override fun setValue(thisRef: Any?, property: KProperty<*>, value: T) {
         synchronized(this) {

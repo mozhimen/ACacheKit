@@ -32,6 +32,8 @@ include ':cachek_datastore'
 include ':cachek_serial'
 include ':cachek_datastore_test'
 include ':cachek_room_paging'
+include ':cachek_crypto'
+include ':cachek_ext'
 //SwiftKit
 include ':SwiftKit'
 project(':SwiftKit').projectDir = new File("D:\\WorkSpace\\GitHub\\SwiftKit")
@@ -58,5 +60,4 @@ project(':ATaskKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ATaskKit")
 include ':ATaskKit:taskk_executor'
 
 
-include ':cachek_crypto'
-include ':cachek_ext'
+
