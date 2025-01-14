@@ -39,8 +39,8 @@ android {
 dependencies {
     implementation project(':cachek_ext')
     implementation project(':cachek_datastore')
-    implementation project(':SwiftKit:bindk')
-    implementation project(':SwiftKit:xmlk')
+    implementation project(':ASwiftKit:bindk')
+    implementation project(':ASwiftKit:xmlk')
     implementation project(':ATaskKit:taskk_executor')
 
     testImplementation 'junit:junit:4.13.2'

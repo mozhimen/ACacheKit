@@ -31,20 +31,24 @@ include ':cachek_room'
 include ':cachek_datastore'
 include ':cachek_serial'
 include ':cachek_datastore_test'
-include ':cachek_room_paging'
 include ':cachek_crypto'
 include ':cachek_ext'
-//SwiftKit
-include ':SwiftKit'
-project(':SwiftKit').projectDir = new File("D:\\WorkSpace\\GitHub\\SwiftKit")
-include ':SwiftKit:bindk'
-include ':SwiftKit:basick'
-include ':SwiftKit:xmlk'
+//ASwiftKit
+include ':ASwiftKit'
+project(':ASwiftKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ASwiftKit")
+include ':ASwiftKit:bindk'
+include ':ASwiftKit:basick'
+include ':ASwiftKit:xmlk'
+//ALibKit_Jetbrains
+include ':ALibKit_Jetbrains'
+project(':ALibKit_Jetbrains').projectDir = new File("D:\\WorkSpace\\GitHub\\ALibKit_Jetbrains")
+include ':ALibKit_Jetbrains:kotlin_stdlib'
 //ALibKit_Jetpack
 include ':ALibKit_Jetpack'
 project(':ALibKit_Jetpack').projectDir = new File("D:\\WorkSpace\\GitHub\\ALibKit_Jetpack")
 include ':ALibKit_Jetpack:room'
 include ':ALibKit_Jetpack:datastore'
+include ':ALibKit_Jetpack:databinding'
 //ACryptoKit
 include ':ACryptoKit'
 project(':ACryptoKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ACryptoKit")
