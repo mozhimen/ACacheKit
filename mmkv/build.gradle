@@ -1,11 +1,10 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
 }
 
 android {
-    namespace 'com.mozhimen.cachek.room'
+    namespace 'com.mozhimen.cachek.mmkv'
     compileSdk 34
 
     defaultConfig {
@@ -13,7 +12,7 @@ android {
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-//        consumerProguardFiles "consumer-rules.pro"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -32,13 +31,13 @@ android {
 }
 
 dependencies {
-    api project(project.path.replace(project.name,'')+':cachek_basic')
-    implementation project(':ASwiftKit:basick')
+    implementation project(':KUtilKit:android')
+    implementation project(project.path.replace(project.name,'')+':basic')
+    //////////////////////////////////////////////////////////////////
+    //room mmkv
+    api 'com.tencent:mmkv:1.2.10'
 
-    //room cachek
-    implementation project(':ALibKit_Jetpack:room')
-    kapt 'androidx.room:room-compiler:2.6.1'
-
+    //test
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'

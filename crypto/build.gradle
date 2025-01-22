@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'com.mozhimen.cachek.datastore'
+    namespace 'com.mozhimen.cachek.crypto'
     compileSdk 34
 
     defaultConfig {
@@ -31,9 +31,8 @@ android {
 }
 
 dependencies {
-    implementation project(':KUtilKit:utilk_android')
-    implementation project(':ALibKit_Jetpack:datastore')
-    api project(project.path.replace(project.name,'')+':cachek_basic')
+    api project(project.path.replace(project.name,'')+':basic')
+    implementation project(':ACryptoKit:basic')
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

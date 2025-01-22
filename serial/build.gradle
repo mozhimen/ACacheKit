@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'com.mozhimen.cachek.sharedpreferences'
+    namespace 'com.mozhimen.cachek.serial'
     compileSdk 34
 
     defaultConfig {
@@ -32,8 +32,7 @@ android {
 
 dependencies {
     implementation project(':ASwiftKit:basick')
-    api project(project.path.replace(project.name, '') + ':cachek_basic')
-
+    implementation project(project.path.replace(project.name,'')+':room')
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'

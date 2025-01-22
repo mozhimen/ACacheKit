@@ -21,47 +21,54 @@ dependencyResolutionManagement {
 
 rootProject.name = "ACacheKit"
 include ':app'
-include ':cachek_mmkv'
-include ':cachek_rx_preferences2'
-include ':cachek_flow_preferences'
-include ':cachek_harmony'
-include ':cachek_basic'
-include ':cachek_sharedpreferences'
-include ':cachek_room'
-include ':cachek_datastore'
-include ':cachek_serial'
-include ':cachek_datastore_test'
-include ':cachek_crypto'
-include ':cachek_ext'
-//ASwiftKit
-include ':ASwiftKit'
-project(':ASwiftKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ASwiftKit")
-include ':ASwiftKit:bindk'
-include ':ASwiftKit:basick'
-include ':ASwiftKit:xmlk'
-//ALibKit_Jetbrains
-include ':ALibKit_Jetbrains'
-project(':ALibKit_Jetbrains').projectDir = new File("D:\\WorkSpace\\GitHub\\ALibKit_Jetbrains")
-include ':ALibKit_Jetbrains:kotlin_stdlib'
+include ':mmkv'
+include ':rx_preferences2'
+include ':flow_preferences'
+include ':harmony'
+include ':basic'
+include ':sharedpreferences'
+include ':room'
+include ':datastore'
+include ':datastore:test'
+include ':serial'
+include ':crypto'
+include ':ext'
+//ALibKit_Google
+include ':ALibKit_Google'
+project(':ALibKit_Google').projectDir = new File("D:\\WorkSpace\\GitHub\\ALibKit_Google")
+include ':ALibKit_Google:material'
 //ALibKit_Jetpack
 include ':ALibKit_Jetpack'
 project(':ALibKit_Jetpack').projectDir = new File("D:\\WorkSpace\\GitHub\\ALibKit_Jetpack")
 include ':ALibKit_Jetpack:room'
 include ':ALibKit_Jetpack:datastore'
 include ':ALibKit_Jetpack:databinding'
-//ACryptoKit
-include ':ACryptoKit'
-project(':ACryptoKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ACryptoKit")
-include ':ACryptoKit:cryptok_basic'
+include ':ALibKit_Jetpack:core'
+include ':ALibKit_Jetpack:annotation'
+//ALibKit_Jetbrains
+include ':ALibKit_Jetbrains'
+project(':ALibKit_Jetbrains').projectDir = new File("D:\\WorkSpace\\GitHub\\ALibKit_Jetbrains")
+include ':ALibKit_Jetbrains:kotlin_stdlib'
+include ':ALibKit_Jetbrains:kotlinx_coroutines'
 //KUtilKit
 include ':KUtilKit'
 project(':KUtilKit').projectDir = new File("D:\\WorkSpace\\GitHub\\KUtilKit")
-include ':KUtilKit:utilk_android'
-include ':KUtilKit:utilk_kotlin'
+include ':KUtilKit:android'
+include ':KUtilKit:kotlin'
+//ASwiftKit
+include ':ASwiftKit'
+project(':ASwiftKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ASwiftKit")
+include ':ASwiftKit:bindk'
+include ':ASwiftKit:basick'
+include ':ASwiftKit:xmlk'
+//ACryptoKit
+include ':ACryptoKit'
+project(':ACryptoKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ACryptoKit")
+include ':ACryptoKit:basic'
 //ATaskKit
 include ':ATaskKit'
 project(':ATaskKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ATaskKit")
-include ':ATaskKit:taskk_executor'
+include ':ATaskKit:executor'
 
 
 
