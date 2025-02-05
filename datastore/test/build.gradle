@@ -39,7 +39,7 @@ android {
 dependencies {
     implementation project(':ext')
     implementation project(':datastore')
-    implementation project(':ASwiftKit:bindk')
+    implementation project(':ASwiftKit:uik:databinding')
     implementation project(':ASwiftKit:xmlk')
     implementation project(':ATaskKit:executor')
 

@@ -1,7 +1,7 @@
 package com.mozhimen.cachek.test
 
 import android.os.Bundle
-import com.mozhimen.bindk.bases.viewdatabinding.activity.BaseActivityVDB
+import com.mozhimen.uik.databinding.bases.viewdatabinding.activity.BaseActivityVDB
 import com.mozhimen.cachek.room.CacheKRM2
 import com.mozhimen.cachek.room.temps.CacheKRM2VarPropertyString
 import com.mozhimen.kotlin.utilk.android.widget.showToast

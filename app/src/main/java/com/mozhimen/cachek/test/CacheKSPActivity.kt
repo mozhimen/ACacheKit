@@ -3,7 +3,7 @@ package com.mozhimen.cachek.test
 import android.os.Bundle
 import com.mozhimen.cachek.sharedpreferences.CacheKSP
 import com.mozhimen.cachek.sharedpreferences.temps.CacheKSPVarPropertyString
-import com.mozhimen.bindk.bases.viewdatabinding.activity.BaseActivityVDB
+import com.mozhimen.uik.databinding.bases.viewdatabinding.activity.BaseActivityVDB
 import com.mozhimen.kotlin.utilk.android.widget.showToast
 import com.mozhimen.cachek.test.databinding.ActivityCachekSpBinding
 
