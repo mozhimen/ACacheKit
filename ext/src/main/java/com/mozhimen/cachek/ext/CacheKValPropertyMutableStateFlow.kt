@@ -1,8 +1,6 @@
 package com.mozhimen.cachek.ext
 
-import androidx.lifecycle.MutableLiveData
 import com.mozhimen.cachek.basic.bases.BaseCacheKVarProperty
-import com.mozhimen.cachek.ext.impls.CacheKMutableLiveData
 import com.mozhimen.cachek.ext.impls.CacheKMutableStateFlow
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
@@ -14,7 +12,7 @@ import kotlin.reflect.KProperty
  * @Date 2024/12/9
  * @Version 1.0
  */
-class CacheKMutableStateFlowProperty<T> constructor(private val _cacheKVarProperty: BaseCacheKVarProperty<*, T>) : ReadOnlyProperty<Any?, CacheKMutableStateFlow<T>> {
+class CacheKValPropertyMutableStateFlow<T> constructor(private val _cacheKVarProperty: BaseCacheKVarProperty<*, T>) : ReadOnlyProperty<Any?, CacheKMutableStateFlow<T>> {
     private var _field: CacheKMutableStateFlow<T>? = null
 
     override fun getValue(thisRef: Any?, property: KProperty<*>): CacheKMutableStateFlow<T> =

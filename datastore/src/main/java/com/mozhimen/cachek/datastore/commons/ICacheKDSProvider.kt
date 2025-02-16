@@ -1,6 +1,7 @@
 package com.mozhimen.cachek.datastore.commons
 
 import com.mozhimen.cachek.basic.commons.ICacheKProvider
+import kotlinx.coroutines.flow.Flow
 
 /**
  * @ClassName ICacheKDSProvider
@@ -34,6 +35,7 @@ interface ICacheKDSProvider : ICacheKProvider {
 
     /////////////////////////////////////////////////////////////////////
 
+
     fun getInt(key: String): Int
     fun getLong(key: String): Long
     fun getString(key: String): String
@@ -45,6 +47,14 @@ interface ICacheKDSProvider : ICacheKProvider {
 
     /////////////////////////////////////////////////////////////////////
 
+    fun getFlowInt(key: String, default: Int): Flow<Int>
+    fun getFlowLong(key: String, default: Long): Flow<Long>
+    fun getFlowString(key: String, default: String): Flow<String>
+    fun getFlowBoolean(key: String, default: Boolean): Flow<Boolean>
+    fun getFlowFloat(key: String, default: Float): Flow<Float>
+    fun getFlowDouble(key: String, default: Double): Flow<Double>
+    fun getFlowStringSet(key: String, default: Set<String>): Flow<Set<String>>
+    fun getFlowByteArray(key: String, default: ByteArray): Flow<ByteArray>
     fun getInt(key: String, default: Int): Int
     fun getLong(key: String, default: Long): Long
     fun getString(key: String, default: String): String

@@ -1,8 +1,8 @@
 package com.mozhimen.cachek.ext.utils
 
 import com.mozhimen.cachek.basic.bases.BaseCacheKVarProperty
-import com.mozhimen.cachek.ext.CacheKMutableLiveDataProperty
-import com.mozhimen.cachek.ext.CacheKMutableStateFlowProperty
+import com.mozhimen.cachek.ext.CacheKValPropertyMutableLiveData
+import com.mozhimen.cachek.ext.CacheKValPropertyMutableStateFlow
 
 /**
  * @ClassName UtilKCacheKExt
@@ -12,20 +12,20 @@ import com.mozhimen.cachek.ext.CacheKMutableStateFlowProperty
  * @Version 1.0
  */
 
-fun <T> BaseCacheKVarProperty<*, T>.asCacheKMutableLiveData(): CacheKMutableLiveDataProperty<T> =
-    UtilKCacheKExt.asCacheKMutableLiveData(this)
+fun <T> BaseCacheKVarProperty<*, T>.asMutableLiveData(): CacheKValPropertyMutableLiveData<T> =
+    UtilKCacheKExt.asMutableLiveData(this)
 
-fun <T> BaseCacheKVarProperty<*, T>.asCacheKMutableStateFlow(): CacheKMutableStateFlowProperty<T> =
-    UtilKCacheKExt.asCacheKMutableStateFlow(this)
+fun <T> BaseCacheKVarProperty<*, T>.asMutableStateFlow(): CacheKValPropertyMutableStateFlow<T> =
+    UtilKCacheKExt.asMutableStateFlow(this)
 
 ////////////////////////////////////////////////////////////////////
 
 object UtilKCacheKExt {
     @JvmStatic
-    fun <T> asCacheKMutableLiveData(cacheKVarProperty: BaseCacheKVarProperty<*, T>): CacheKMutableLiveDataProperty<T> =
-        CacheKMutableLiveDataProperty(cacheKVarProperty)
+    fun <T> asMutableLiveData(cacheKVarProperty: BaseCacheKVarProperty<*, T>): CacheKValPropertyMutableLiveData<T> =
+        CacheKValPropertyMutableLiveData(cacheKVarProperty)
 
     @JvmStatic
-    fun <T> asCacheKMutableStateFlow(cacheKVarProperty: BaseCacheKVarProperty<*, T>): CacheKMutableStateFlowProperty<T> =
-        CacheKMutableStateFlowProperty(cacheKVarProperty)
+    fun <T> asMutableStateFlow(cacheKVarProperty: BaseCacheKVarProperty<*, T>): CacheKValPropertyMutableStateFlow<T> =
+        CacheKValPropertyMutableStateFlow(cacheKVarProperty)
 }

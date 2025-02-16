@@ -2,17 +2,16 @@ package com.mozhimen.cachek.datastore.test
 
 import android.os.Bundle
 import android.util.Log
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import com.mozhimen.uik.databinding.bases.viewbinding.activity.BaseActivityVB
 import com.mozhimen.uik.databinding.bases.viewbinding.activity.BaseActivityVBVM
 import com.mozhimen.taskk.executor.TaskKExecutor
 import com.mozhimen.kotlin.utilk.android.os.UtilKHandlerWrapper
 import com.mozhimen.kotlin.utilk.android.widget.showToast
 import com.mozhimen.kotlin.utilk.android.widget.value
 import com.mozhimen.cachek.datastore.CacheKDS
-import com.mozhimen.cachek.datastore.temps.CacheKDSVarPropertyString
 import com.mozhimen.cachek.datastore.test.databinding.ActivityMainBinding
-import com.mozhimen.cachek.ext.utils.asCacheKMutableLiveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -45,8 +44,24 @@ class MainActivity : BaseActivityVBVM<ActivityMainBinding, MainViewModel>() {
     }
 
     override fun initObserver() {
-        vm.SAVE_KEY.observe(this) {
-            it.showToast()
+//        vm.SAVE_KEY.observe(this) {
+//            it.showToast()
+//        }
+
+//        lifecycleScope.launch {
+//            repeatOnLifecycle(Lifecycle.State.STARTED){
+//                vm.SAVE_KEY_FLOW.collect {
+//                    it.showToast()
+//                }
+//            }
+//        }
+
+        lifecycleScope.launch {
+            vm.SAVE_KEY_FLOW.flowWithLifecycle(lifecycle,Lifecycle.State.STARTED)
+                .collect{
+                    Log.d(TAG, "initObserver: $it")
+                    it.showToast()
+                }
         }
     }
 

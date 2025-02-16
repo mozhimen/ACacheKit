@@ -12,7 +12,7 @@ import kotlin.reflect.KProperty
  * @Date 2024/12/9
  * @Version 1.0
  */
-class CacheKMutableLiveDataProperty<T> constructor(private val _cacheKVarProperty: BaseCacheKVarProperty<*, T>) : ReadOnlyProperty<Any?, CacheKMutableLiveData<T>> {
+class CacheKValPropertyMutableLiveData<T> constructor(private val _cacheKVarProperty: BaseCacheKVarProperty<*, T>) : ReadOnlyProperty<Any?, CacheKMutableLiveData<T>> {
     private var _field: CacheKMutableLiveData<T>? = null
 
     override fun getValue(thisRef: Any?, property: KProperty<*>): CacheKMutableLiveData<T> =
