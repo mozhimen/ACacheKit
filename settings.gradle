@@ -71,4 +71,4 @@ project(':ATaskKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ATaskKit")
 include ':ATaskKit:executor'
 
 
-
+include ':mmkv:v1_2_15'
