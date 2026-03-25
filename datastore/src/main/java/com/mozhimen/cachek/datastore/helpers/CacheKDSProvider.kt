@@ -3,6 +3,7 @@ package com.mozhimen.cachek.datastore.helpers
 import android.content.Context
 import android.util.Log
 import androidx.datastore.core.DataStore
+import androidx.datastore.core.handlers.ReplaceFileCorruptionHandler
 import androidx.datastore.preferences.core.*
 import androidx.datastore.preferences.preferencesDataStore
 import com.mozhimen.cachek.basic.commons.ICacheKProviderFlow
@@ -17,7 +18,13 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
 open class CacheKDSProvider(dsName: String) : ICacheKDSProvider, BaseUtilK(), ICacheKProviderFlow {
-    private val Context._dataStore: DataStore<Preferences> by preferencesDataStore(name = dsName)
+    private val Context._dataStore: DataStore<Preferences> by preferencesDataStore(name = dsName, corruptionHandler = ReplaceFileCorruptionHandler(
+        produceNewData = {
+            // Log the exception to understand when corruption occurs
+//            Log.e("DataStore", "DataStore corruption occurred, clearing data.", it)
+            emptyPreferences() // Return an empty Preferences object to clear the data
+        })
+    )
     open val dataStore: DataStore<Preferences> by lazy { _context._dataStore }
 
     /////////////////////////////////////////////////////////////////////
