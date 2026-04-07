@@ -31,8 +31,8 @@ android {
 }
 
 dependencies {
-    implementation project(':KUtilKit:android')
-    implementation project(':ALibKit_Jetpack:datastore')
+    implementation 'com.github.mozhimen.KUtilKit:android:0.0.2'
+    implementation project(':ALibKit_Jetpack:datastore-bom')
     api project(project.path.replace(project.name,'')+':basic')
 
     testImplementation 'junit:junit:4.13.2'
