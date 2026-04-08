@@ -32,7 +32,7 @@ android {
 
 dependencies {
     api project(project.path.replace(project.name,'')+':basic')
-    implementation project(':ACryptoKit:basic')
+    implementation 'com.github.mozhimen:ACryptoKit:0.0.2'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

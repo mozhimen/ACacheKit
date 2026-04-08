@@ -37,11 +37,11 @@ android {
 }
 
 dependencies {
+    implementation 'com.github.mozhimen.ASwiftKit:uik-databinding:2.0.3'
+    implementation 'com.github.mozhimen.ASwiftKit:xmlk:2.0.3'
+    implementation 'com.github.mozhimen.ATaskKit:executor:0.0.1'
     implementation project(':ext')
     implementation project(':datastore')
-    implementation project(':ASwiftKit:uik:databinding')
-    implementation project(':ASwiftKit:xmlk')
-    implementation project(':ATaskKit:executor')
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

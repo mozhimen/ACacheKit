@@ -37,9 +37,9 @@ android {
 }
 
 dependencies {
-    implementation project(':ASwiftKit:uik:databinding')
-    implementation project(':ASwiftKit:xmlk')
-    implementation project(':ASwiftKit:uik')
+    implementation 'com.github.mozhimen.ASwiftKit:uik-databinding:2.0.3'
+    implementation 'com.github.mozhimen.ASwiftKit:uik:2.0.3'
+    implementation 'com.github.mozhimen.ASwiftKit:xmlk:2.0.3'
     implementation project(':basic')
     implementation project(':datastore')
     implementation project(':room')

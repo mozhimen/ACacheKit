@@ -18,7 +18,7 @@ import java.lang.IllegalArgumentException
  */
 class CacheKSPProvider(spName: String) : ICacheKSPProvider, BaseUtilK() {
 
-    private val _sharedPreferences: SharedPreferences by lazy { UtilKContext.getSharedPreferences(_context, spName, Context.MODE_PRIVATE) }
+    private val _sharedPreferences: SharedPreferences by lazy { UtilKContext.getSharedPreferences(spName, Context.MODE_PRIVATE,_context) }
 
     /////////////////////////////////////////////////////////////////////
 

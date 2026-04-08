@@ -31,10 +31,8 @@ android {
 }
 
 dependencies {
-    implementation 'com.github.mozhimen.KUtilKit:android:0.0.2'
     implementation project(project.path.replace(project.name,'')+':basic')
-    //////////////////////////////////////////////////////////////////
-    //room mmkv
+    implementation 'com.github.mozhimen.KUtilKit:android:0.0.3'
     api 'com.tencent:mmkv:1.2.10'
 
     //test
